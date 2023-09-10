@@ -139,6 +139,7 @@ async function createChange({
             if (err.response.status == 400) {
                 let errMsg = 'ServiceNow DevOps Change is not created. Please check ServiceNow logs for more details.';
                 let responseData = err.response.data;
+                console.log('\n     \x1b[1m\x1b[36m' + "responseData: " + responseData + '\x1b[0m\x1b[0m');
                 if (responseData && responseData.error && responseData.error.message) {
                     errMsg = responseData.error.message;
                 } else if (responseData && responseData.result && responseData.result.details && responseData.result.details.errors) {
@@ -148,6 +149,7 @@ async function createChange({
                         errMsg = errMsg + errors[index].message;
                     }
                 }
+                console.log('\n     \x1b[1m\x1b[36m' + "errMsg: " + errMsg + '\x1b[0m\x1b[0m');
                 if (errMsg.indexOf('Waiting for Inbound Event') == -1) {
                     retry = true;
                 } else if (attempts >= 3) {
@@ -166,7 +168,7 @@ async function createChange({
         }else
         console.log('\n     \x1b[1m\x1b[36m' + "status is false " + '\x1b[0m\x1b[0m');
 
-        console.log('\n     \x1b[1m\x1b[36m' + "response: " + response + '\x1b[0m\x1b[0m');
+        console.log('\n     \x1b[1m\x1b[36m' + "response:2 " + response + '\x1b[0m\x1b[0m');
     }
 }
 
