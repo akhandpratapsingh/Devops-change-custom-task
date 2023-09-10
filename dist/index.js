@@ -5945,7 +5945,7 @@ async function createChange({
             if (err.response.status == 400) {
                 let errMsg = 'ServiceNow DevOps Change is not created. Please check ServiceNow logs for more details.';
                 let responseData = err.response.data;
-                console.log('\n     \x1b[1m\x1b[36m' + "responseData: " + responseData + '\x1b[0m\x1b[0m');
+                console.log('\n     \x1b[1m\x1b[36m' + "responseData: " + JSON.stringify(responseData) + '\x1b[0m\x1b[0m');
                 if (responseData && responseData.error && responseData.error.message) {
                     errMsg = responseData.error.message;
                 } else if (responseData && responseData.result && responseData.result.details && responseData.result.details.errors) {
@@ -5964,6 +5964,11 @@ async function createChange({
                 } else if (errMsg.indexOf('callbackURL') == -1) {
                     throw new Error(errMsg);
                 }
+                // if (errMsg.indexOf('callbackURL') == -1) {
+                //     throw new Error(errMsg);
+                // }else if(attempts >= 3) {
+                //     retry = false;
+                // }         
             }
         }
         if (status) {
