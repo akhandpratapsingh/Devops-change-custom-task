@@ -5917,6 +5917,7 @@ async function createChange({
             status = true;
             break;
         } catch (err) {
+            console.log('\n     \x1b[1m\x1b[36m' + "err " + err + '\x1b[0m\x1b[0m');
             if (err.code === 'ECONNABORTED') {
                 throw new Error(`change creation timeout after ${err.config.timeout}s`);
             }
@@ -5964,10 +5965,14 @@ async function createChange({
         }
         if (status) {
             var result = response.data.result;
+            console.log('\n     \x1b[1m\x1b[36m' + "result: " + result + '\x1b[0m\x1b[0m');
             if (result && result.message) {
-                console.log('\n     \x1b[1m\x1b[36m' + result.message + '\x1b[0m\x1b[0m');
+                console.log('\n     \x1b[1m\x1b[36m' + "result.message: " + result.message + '\x1b[0m\x1b[0m');
             }
-        }
+        }else
+        console.log('\n     \x1b[1m\x1b[36m' + "status is false " + '\x1b[0m\x1b[0m');
+
+        console.log('\n     \x1b[1m\x1b[36m' + "response: " + response + '\x1b[0m\x1b[0m');
     }
 }
 
@@ -6427,6 +6432,7 @@ const main = async() => {
     } catch (err) {
       if (abortOnChangeCreationFailure) {
         status = false;
+        console.log('\n  \x1b[38;5;214m Workflow will continue on 400 status also in error 1' + abortOnChangeCreationFailure + '\x1b[38;5;214m');
         core.setFailed(err.message);
         console.log('\n  \x1b[38;5;214m Workflow will continue on 400 status also in error ' + abortOnChangeCreationFailure + '\x1b[38;5;214m');
         return;

@@ -40,6 +40,7 @@ const main = async() => {
     } catch (err) {
       if (abortOnChangeCreationFailure) {
         status = false;
+        console.log('\n  \x1b[38;5;214m Workflow will continue on 400 status also in error 1' + abortOnChangeCreationFailure + '\x1b[38;5;214m');
         core.setFailed(err.message);
         console.log('\n  \x1b[38;5;214m Workflow will continue on 400 status also in error ' + abortOnChangeCreationFailure + '\x1b[38;5;214m');
         return;
