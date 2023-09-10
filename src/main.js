@@ -40,16 +40,13 @@ const main = async() => {
     } catch (err) {
       if (abortOnChangeCreationFailure) {
         status = false;
-        console.log('\n  \x1b[38;5;214m Workflow will continue on 400 status also in error 1' + abortOnChangeCreationFailure + '\x1b[38;5;214m');
         core.setFailed(err.message);
       }
       else { 
         console.error("creation failed with error message ," + err.message);
-        console.log('\n  \x1b[38;5;214m Workflow will continue executing the next step as abortOnChangeCreationFailure is ' + abortOnChangeCreationFailure + '\x1b[38;5;214m');
         return;
       }
     }
-    console.log('\n  \x1b[38;5;214m Workflow will continue on 400 status also :: 2 ' + abortOnChangeCreationFailure + '\x1b[38;5;214m');
     if (deploymentGateStr)
       status = false; //do not poll to check for deployment gate feature
 
