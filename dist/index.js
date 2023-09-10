@@ -5917,7 +5917,6 @@ async function createChange({
             status = true;
             break;
         } catch (err) {
-            console.log('\n     \x1b[1m\x1b[36m' + "err " + err + '\x1b[0m\x1b[0m');
             if (err.code === 'ECONNABORTED') {
                 throw new Error(`change creation timeout after ${err.config.timeout}s`);
             }
@@ -5955,7 +5954,7 @@ async function createChange({
                         errMsg = errMsg + errors[index].message;
                     }
                 }
-                console.log('\n     \x1b[1m\x1b[36m' + "errMsg: " + errMsg + '\x1b[0m\x1b[0m');
+                //console.log('\n     \x1b[1m\x1b[36m' + "errMsg: " + errMsg + '\x1b[0m\x1b[0m');
                 // if (errMsg.indexOf('Waiting for Inbound Event') == -1) {
                 //     retry = true;
                 // } else 
