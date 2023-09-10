@@ -5959,7 +5959,7 @@ async function createChange({
                 // if (errMsg.indexOf('Waiting for Inbound Event') == -1) {
                 //     retry = true;
                 // } else 
-                if (attempts <= 3) {
+                if (attempts < 3) {
                     retry = true;
                 } else {
                     throw new Error(errMsg);
