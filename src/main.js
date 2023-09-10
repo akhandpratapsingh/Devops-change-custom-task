@@ -41,6 +41,7 @@ const main = async() => {
       if (abortOnChangeCreationFailure) {
         status = false;
         core.setFailed(err.message);
+        return;
       }
       else { 
         console.error("creation failed with error message ," + err.message);
