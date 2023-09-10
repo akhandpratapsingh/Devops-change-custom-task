@@ -5959,16 +5959,11 @@ async function createChange({
                 // if (errMsg.indexOf('Waiting for Inbound Event') == -1) {
                 //     retry = true;
                 // } else 
-                if (attempts >= 3) {
-                    retry = false;
-                } else if (errMsg.indexOf('callbackURL') == -1) {
+                if (attempts <= 3) {
+                    retry = true;
+                } else {
                     throw new Error(errMsg);
-                }
-                // if (errMsg.indexOf('callbackURL') == -1) {
-                //     throw new Error(errMsg);
-                // }else if(attempts >= 3) {
-                //     retry = false;
-                // }         
+                }       
             }
         }
         if (status) {
@@ -5977,10 +5972,7 @@ async function createChange({
             if (result && result.message) {
                 console.log('\n     \x1b[1m\x1b[36m' + "result.message: " + result.message + '\x1b[0m\x1b[0m');
             }
-        }else
-        console.log('\n     \x1b[1m\x1b[36m' + "status is false " + '\x1b[0m\x1b[0m');
-
-        console.log('\n     \x1b[1m\x1b[36m' + "response:2 " + response + '\x1b[0m\x1b[0m');
+        }
     }
 }
 
@@ -6442,8 +6434,6 @@ const main = async() => {
         status = false;
         console.log('\n  \x1b[38;5;214m Workflow will continue on 400 status also in error 1' + abortOnChangeCreationFailure + '\x1b[38;5;214m');
         core.setFailed(err.message);
-        console.log('\n  \x1b[38;5;214m Workflow will continue on 400 status also in error ' + abortOnChangeCreationFailure + '\x1b[38;5;214m');
-        return;
       }
       else { 
         console.error("creation failed with error message ," + err.message);
