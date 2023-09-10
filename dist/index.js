@@ -5956,9 +5956,10 @@ async function createChange({
                     }
                 }
                 console.log('\n     \x1b[1m\x1b[36m' + "errMsg: " + errMsg + '\x1b[0m\x1b[0m');
-                if (errMsg.indexOf('Waiting for Inbound Event') == -1) {
-                    retry = true;
-                } else if (attempts >= 3) {
+                // if (errMsg.indexOf('Waiting for Inbound Event') == -1) {
+                //     retry = true;
+                // } else 
+                if (attempts >= 3) {
                     retry = false;
                 } else if (errMsg.indexOf('callbackURL') == -1) {
                     throw new Error(errMsg);
