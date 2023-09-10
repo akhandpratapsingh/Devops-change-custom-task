@@ -5956,6 +5956,7 @@ async function createChange({
                     }
                 }
                 console.log('\n     \x1b[1m\x1b[36m' + "errMsg: " + errMsg + '\x1b[0m\x1b[0m');
+                console.log('\n     \x1b[1m\x1b[36m' + "attempts: " + attempts + '\x1b[0m\x1b[0m');
                 // if (errMsg.indexOf('Waiting for Inbound Event') == -1) {
                 //     retry = true;
                 // } else 
@@ -6441,7 +6442,7 @@ const main = async() => {
         return;
       }
     }
-    console.log('\n  \x1b[38;5;214m Workflow will continue on 400 status also ::2 ' + abortOnChangeCreationFailure + '\x1b[38;5;214m');
+    console.log('\n  \x1b[38;5;214m Workflow will continue on 400 status also :: 2 ' + abortOnChangeCreationFailure + '\x1b[38;5;214m');
     if (deploymentGateStr)
       status = false; //do not poll to check for deployment gate feature
 
