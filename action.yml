@@ -1,4 +1,4 @@
-name: 'Devops-change-custom-task'
+name: 'ServiceNow DevOps Change Automation'
 description: 'Pause/Resume Workflow Run based on ServiceNow Change Approval Status'
 inputs:
   instance-url: 
