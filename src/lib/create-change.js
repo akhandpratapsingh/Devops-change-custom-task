@@ -175,7 +175,7 @@ async function createChange({
                 if (!retry) {
                     core.debug("[ServiceNow DevOps], Receiving response for Create Change, Response :" + circularSafeStringify(response) + "\n");
                 }
-                await new Promise((resolve) => setTimeout(resolve, 30000));
+                await new Promise((resolve) => setTimeout(resolve, 10000));
             }
         }
         if (status) {
